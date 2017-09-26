@@ -2,32 +2,25 @@ import java.util.Scanner;
 
 public class GetExcelColumn {
 
-    private static char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-
     private static String getColumnName(int number) {
-        String firstLetter = Character.toString(alphabet[number / 26]);
-        String secondLetter = Character.toString(alphabet[number % 26]);
-        return firstLetter + secondLetter;
+        StringBuilder result = new StringBuilder();
+        while (number-- > 0) {
+            result.append((char)('A' + (number % 26)));
+            number /= 26;
+        }
+        return result.reverse().toString();
     }
 
     private static int getColumnNumber(String name) {
-        char firstChar = name.charAt(0);
-        char secondChar = name.charAt(1);
-        int firstNum = 0;
-        int secondNum = 0;
-        for (int i = 0; i < alphabet.length; i++) {
-            if (firstChar == alphabet[i]) {
-                firstNum = i;
-            }
-            if (secondChar == alphabet[i]) {
-                secondNum = i;
-            }
+        int number = 0;
+        int j = name.length() - 1;
+        for (int i = 0; i < name.length(); i++) {
+            number += Math.pow(26, i) * (name.charAt(j--) - ('A' - 1));
         }
-
-        return firstNum * 26 + secondNum; //TODO
+        return number;
     }
 
-    public static void main(String[] args) {
+    public static void excel() {
         System.out.println("Enter the column number: ");
         Scanner scanner = new Scanner(System.in);
         int cNumber = Integer.valueOf(scanner.nextLine());

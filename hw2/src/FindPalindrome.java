@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class FindPalindrome {
 
     public static boolean isPalindrome(int integer) {
@@ -7,7 +9,7 @@ public class FindPalindrome {
     }
 
 
-    public static void main(String[] args) {
+    public static void palindromes() {
         int input[] = {100, 200, 3231, 404, 902, 42241, 76467};
         int plndrm1 = 0;
         int plndrm2 = 0;
@@ -22,6 +24,7 @@ public class FindPalindrome {
                 }
             }
         }
+        System.out.println("Looking for palindromes in this array: " + Arrays.toString(input));
         System.out.println("palindromes: " + plndrm1 + ", " + plndrm2);
     }
 }

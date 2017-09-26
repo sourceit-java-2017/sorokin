@@ -21,8 +21,8 @@ public class GetHashString {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println("Enter your string: ");
+    public static void hashcode() {
+        System.out.println("Enter your string to encrypt: ");
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
         System.out.println("Enter preferred algorithm(SHA-256/MD5): ");
