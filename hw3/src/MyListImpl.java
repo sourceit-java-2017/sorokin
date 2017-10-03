@@ -37,8 +37,10 @@ public class MyListImpl implements MyList {
 
     @Override
     public boolean add(Object o) {
-        arr = Arrays.copyOf(arr, arr.length + 1);
-        arr[arr.length - 1] = new Person();
+        if (o instanceof Person) {
+            arr = Arrays.copyOf(arr, arr.length + 1);
+            arr[arr.length - 1] = (Person) o;
+        }
         return false;
     }
 
@@ -66,14 +68,22 @@ public class MyListImpl implements MyList {
 
     @Override
     public Object get(int index) {
+        if ((index < 0 || index >= arr.length)) {
+            return null;
+        }
         return arr[index];
     }
 
     @Override
     public Object set(int index, Object element) {
-        Person prev = arr[index];
-        arr[index] = (Person) element;
-        return prev;
+        if ( index < arr.length) {
+            Person prev = arr[index];
+            if (element instanceof Person) {
+                arr[index] = (Person) element;
+            }
+            return prev;
+        }
+        return null;
     }
 
     @Override

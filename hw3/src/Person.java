@@ -1,6 +1,6 @@
 public class Person {
-    public String name = "Bob";
-    public int age;
+    private String name = "Bob";
+    private int age;
 
     public void getName() {
         System.out.println(name);
@@ -12,5 +12,10 @@ public class Person {
 
     public int getAge() {
         return age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj == this && obj instanceof Person;
     }
 }
